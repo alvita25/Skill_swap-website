@@ -102,21 +102,23 @@ header button:hover{
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    height: max-content;
     background: rgba(0, 0, 0, 0.7);
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     z-index: 1000;
 
 
 }
 
 .changename {
-    position: relative;
-    top: 50px;
+    /* position: relative; */
+    /* top: 50px; */
+    margin-top:50px;
+    margin-bottom: 50px;
     padding: 20px;
     border-radius: 5px;
-    background-color: rgb(103, 103, 192);
     background-color: rgb(243, 215, 181);
     width: 30%;
     min-height: 60%;

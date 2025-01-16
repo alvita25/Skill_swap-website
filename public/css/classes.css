@@ -202,3 +202,8 @@ header h1 {
     padding-bottom: 10px;
     background-color: rgb(177, 95, 95);
 }
+
+.butu{
+    width:max-content;
+    margin:4px;
+}

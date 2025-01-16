@@ -62,7 +62,7 @@ window.onload = async function () {
 
         const newbut = document.createElement("button");
         newbut.classList.add("cancel");
-        newbut.innerText = "Cancel Skill";
+        newbut.innerText = "Unenroll";
         // Add the class ID as a data attribute to the button
         newbut.setAttribute("data-id", element.class_id);
 

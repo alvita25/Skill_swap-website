@@ -141,7 +141,7 @@ async function gets() {
                     <p>Date: ${onlyDate}</p>
                     <p>Timings: ${timeSlot.start_time} - ${timeSlot.end_time}</p>
                     <div class="button-container">
-                         <button class="but add" classId="${timeSlot.class_id}">Add class</button>
+                         <button class="but add" classId="${timeSlot.class_id}">Enroll</button>
                     </div>
                     `;
                     skillDiv.querySelector(".timings").appendChild(timingDiv);
