@@ -56,8 +56,11 @@ async function gets() {
                     const timingDiv = document.createElement('div');
                     timingDiv.classList.add("times");
                     const date = new Date(timeSlot.date);
-                    const onlyDate = date.toISOString().split('T')[0];
-
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const onlyDate = `${year}-${month}-${day}`;
+                    
                     timingDiv.innerHTML = `
                     <p>Date: ${onlyDate}</p>
                     <p>Timings: ${timeSlot.start_time} - ${timeSlot.end_time}</p>

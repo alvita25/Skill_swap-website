@@ -45,9 +45,9 @@ window.onload = async function () {
 
         const dateObj = new Date(element.date);
         // Extract date, month, and year
-        const day = String(dateObj.getUTCDate()).padStart(2, '0'); // Ensures 2 digits
-        const month = String(dateObj.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-based
-        const year = dateObj.getUTCFullYear();
+        const day = String(dateObj.getDate()).padStart(2, '0'); // Ensures 2 digits
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = dateObj.getFullYear();
 
         // Combine in dd-mm-yyyy format
         const formattedDate = `${day}-${month}-${year}`;

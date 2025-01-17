@@ -111,7 +111,7 @@ async function gets() {
                 <h2>Skill Name: ${element.skill_name}</h2>
                 <p>Teacher: ${element.user_name}</p>
                 <p>Phone No.: ${element.phone}</p>
-                <p>Tution Center: ${element.address}</p>
+                <p>Address: ${element.address}</p>
                 <p>Distance: ${d}km</p>
                 <p>Description: ${element.description}</p>
                 <div class="timings"></div>
@@ -135,7 +135,10 @@ async function gets() {
                     const timingDiv = document.createElement('div');
                     timingDiv.classList.add("times");
                     const date = new Date(timeSlot.date);
-                    const onlyDate = date.toISOString().split('T')[0];
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const onlyDate = `${year}-${month}-${day}`;
 
                     timingDiv.innerHTML = `
                     <p>Date: ${onlyDate}</p>
