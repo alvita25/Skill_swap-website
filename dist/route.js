@@ -15,8 +15,8 @@ const prerequisiteRoute = require('./src/routes/prerequisites.js');
 
 app.use(express.static(path.join(__dirname, '/public')))
 
-router.get("/", (req, res) => {
-    res.json({ message: "Welcome to the API!" });
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // use routes
