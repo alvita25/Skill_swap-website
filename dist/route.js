@@ -28,7 +28,7 @@ app.use('/prerequisite', prerequisiteRoute);
 
 // middleware for error handling
 app.use((req, res) => {
-    res.sendFile('./public/index.html');
+    res.sendFile(__dirname,'/public/index.html');
 });
 // app.use((req, res) => {
 //     res.status(404).json({ message: 'Page not found' });
