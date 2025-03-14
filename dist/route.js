@@ -16,7 +16,7 @@ const prerequisiteRoute = require('./src/routes/prerequisites.js');
 app.use(express.static(path.join(__dirname, '/public')))
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+    res.sendFile(path.join("public", "index.html"));
 });
 
 // use routes
