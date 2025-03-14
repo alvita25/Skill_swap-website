@@ -28,7 +28,7 @@ app.use('/prerequisite', prerequisiteRoute);
 
 // middleware for error handling
 app.use((req, res) => {
-    res.status(404).json({ message: 'Page not found' });
+    res.status(404).json({ message: 'Page nott found' });
 });
 
 // export express instance 
