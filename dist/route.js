@@ -15,6 +15,10 @@ const prerequisiteRoute = require('./src/routes/prerequisites.js');
 
 app.use(express.static(path.join(__dirname, '/public')))
 
+router.get("/", (req, res) => {
+    res.json({ message: "Welcome to the API!" });
+});
+
 // use routes
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
