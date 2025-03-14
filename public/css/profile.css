@@ -3,6 +3,8 @@ body {
     background-color: #f9f9f9;
     margin: 0;
     background-color: rgb(189, 194, 193);
+    overflow: auto;
+    height: 100%;
 }
 
 .image1 {
@@ -97,7 +99,7 @@ header button:hover{
 
 .changename1 {
 
-    display: none;
+    /* display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -106,7 +108,18 @@ header button:hover{
     height: max-content;
     background: rgba(0, 0, 0, 0.7);
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
+    z-index: 1000; */
+
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    overflow-y: auto; /* Enables vertical scrolling */
     z-index: 1000;
 
 
@@ -115,14 +128,23 @@ header button:hover{
 .changename {
     /* position: relative; */
     /* top: 50px; */
-    margin-top:50px;
+    /* margin-top:50px;
     margin-bottom: 50px;
     padding: 20px;
     border-radius: 5px;
     background-color: rgb(243, 215, 181);
     width: 30%;
     min-height: 60%;
-    height: max-content;
+    height: max-content; */
+
+    margin: 50px auto; /* Center horizontally */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgb(243, 215, 181);
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Limit maximum width */
+    min-height: 60%;
+    /* overflow: hidden; Prevent content overflow */
 }
 
 .changename h2 {
@@ -183,8 +205,8 @@ header button:hover{
 /* map styling  */
 #map {
     margin:auto;
-    height: 300px;
-    width:300px;
+    height: 200px;
+    width:400px;
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;

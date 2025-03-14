@@ -13,12 +13,14 @@ let marker;
 
 const initMap = async (lat, lng) => {
     // Initialize the map and set a default view
-    const map = L.map("map").setView([lat, lng], 13);
+    const map = L.map("map");
 
     // Add OpenStreetMap tiles
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/*, {
         maxZoom: 19,
-    }).addTo(map);
+    }*/).addTo(map);
+
+    map.setView([lat+0.01, lng-0.02], 13);
 
     marker = L.marker([lat, lng]).addTo(map);
 
@@ -39,68 +41,76 @@ const initMap = async (lat, lng) => {
     });
 }
 
-function openMap() {
-    // Check if Geolocation is available
-    if ("geolocation" in navigator) {
-        // Request location
-        navigator.geolocation.getCurrentPosition(
-            async (position) => {
-                let latitude = position.coords.latitude;
-                let longitude = position.coords.longitude;
+async function openMap() {
+    // open map to current position         
+    const response = await fetch('/getUser/coordinates');
+    const result = await response.json();
+    if (!response.ok) {
 
-                // Set values in hidden fields
-                latitudeInput.value = latitude;
-                longitudeInput.value = longitude;
-
-                initMap(latitude, longitude);
-
-            },
-            (error) => {
-                // Handle geolocation errors
-                switch (error.code) {
-                    case error.PERMISSION_DENIED:
-                        // change errorMessage class to warning
-                        displayAlert("User denied the request for Geolocation.", 'error', 'warning');
-                        break;
-
-                    case error.POSITION_UNAVAILABLE:
-                        // change errorMessage class to warning
-                        displayAlert("Location information is unavailable.", 'error', 'warning');
-                        break;
-
-                    case error.TIMEOUT:
-                        // change errorMessage class to warning
-                        displayAlert("The request to get user location timed out.", 'error', 'warning');
-                        break;
-
-                    case error.UNKNOWN_ERROR:
-                        // change errorMessage class to warning
-                        displayAlert("An unknown error occurred.", 'error', 'warning');
-                        break;
-                }
-
-                initMap(12.9716, 77.5946);
-
-            }
-        );
-    } else {
-        // If geolocation is not available, display error message
-        // change errorMessage class to warning
-        displayAlert("Geolocation is not supported by this browser.", 'error', 'warning');
-
+        displayAlert(result.error, 'warning', 'error');
         initMap(12.9716, 77.5946);
+    } else if (response.ok) {
+        initMap(result.latitude, result.longitude);
+    } else {
+
+        // Check if Geolocation is available
+        if ("geolocation" in navigator) {
+            // Request location
+
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    let ltude = position.coords.latitude;
+                    let lontude = position.coords.longitude;
+                    initMap(ltude, lontude);
+                },
+                (error) => {
+                    // Handle geolocation errors
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            // change errorMessage class to warning
+                            displayAlert("User denied the request for Geolocation.", 'error', 'warning');
+                            break;
+
+                        case error.POSITION_UNAVAILABLE:
+                            // change errorMessage class to warning
+                            displayAlert("Location information is unavailable.", 'error', 'warning');
+                            break;
+
+                        case error.TIMEOUT:
+                            // change errorMessage class to warning
+                            displayAlert("The request to get user location timed out.", 'error', 'warning');
+                            break;
+
+                        case error.UNKNOWN_ERROR:
+                            // change errorMessage class to warning
+                            displayAlert("An unknown error occurred.", 'error', 'warning');
+                            break;
+                    }
+                }
+            );
+        } else {
+            // If geolocation is not available, display error message
+            // change errorMessage class to warning
+            displayAlert("Geolocation is not supported by this browser.", 'error', 'warning');
+            initMap(12.9716, 77.5946);
+        }
     }
+
+
 }
-openMap();
+
+// document.addEventListener("DOMContentLoaded", async () => {
+//     await openMap();
+// });
 
 // Modals for Name, Phone, Address, Password
-const openModal = (btnId, modalId) => {
+const openModal = async (btnId, modalId) => {
     let btn = document.getElementById(btnId);
     let modal = document.getElementById(modalId);
     btn.onclick = () => modal.style.display = 'flex';
-    // if (modalId === "addr1") {
-    //     openMap();
-    // }
+    if (modalId === "addr1") {
+        await openMap();
+    }
     modal.onclick = (event) => {
         if (event.target === modal) modal.style.display = 'none';
     };
