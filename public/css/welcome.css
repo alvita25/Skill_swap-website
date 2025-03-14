@@ -55,7 +55,8 @@ header {
     color: white;
 }
 
-.exploreBtn {
+.exploreLink {
+    text-decoration: none;
     display: flex;
     gap: 10px;
     background-color: #fff;
@@ -68,18 +69,8 @@ header {
     font-weight: bold;
 }
 
-.exploreBtn:hover {
-    background-color: #45a049;
-
-}
-
-.exploreLink {
-    text-decoration: none;
-    color: #4CAF50;
-
-}
-
 .exploreLink:hover {
+    background-color: #45a049;
     color: white;
 }
 
