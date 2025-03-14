@@ -15,9 +15,9 @@ const prerequisiteRoute = require('./src/routes/prerequisites.js');
 
 app.use(express.static(path.join(__dirname, '/public')))
 
-// app.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, "public", "index.html"));
-// });
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 // use routes
 app.use('/signup', signupRoute);
@@ -32,7 +32,7 @@ app.use('/prerequisite', prerequisiteRoute);
 
 // middleware for error handling
 app.use((req, res) => {
-    res.sendFile(__dirname,'/public/index.html');
+    res.sendFile(path.join(__dirname,'/public/index.html'));
 });
 // app.use((req, res) => {
 //     res.status(404).json({ message: 'Page not found' });
