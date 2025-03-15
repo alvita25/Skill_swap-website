@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-// app.use('/', router);
+app.use('/', router);
 
 const port = process.env.PORT || 3000;
 
