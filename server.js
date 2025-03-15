@@ -1,10 +1,9 @@
 // import files
 require("dotenv").config()
-const serverless = require("serverless-http");
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require("express-session");
-const router = require('../dist/route.js');
+const router = require('./route.js');
 
 // create instance of express application
 const app = express();
@@ -24,9 +23,15 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 3000;
 
+<<<<<<< HEAD:functions/server.js
 // app.listen(port, () => {
 //     console.log('listening at port ' + port);
 // })
 
 app.use("/.netlify/functions/server", router);
 module.exports.handler = serverless(app);
+=======
+app.listen(port, () => {
+    console.log('listening at port ' + port);
+})
+>>>>>>> parent of 15c8c95 (changes):server.js
