@@ -103,7 +103,7 @@ window.onload = async function () {
 // function to get enrolled classes 
 async function getSkill() {
 
-    const response = await fetch(`http://localhost:2000/participant/`);
+    const response = await fetch(`/participant/`);
     if (!response.ok) {
         console.error("Can't find classes");
         return [];

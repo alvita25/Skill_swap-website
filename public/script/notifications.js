@@ -54,7 +54,7 @@ async function gets() {
 
 // function to get Notification for this day 
 async function getnotify() {
-    const response = await fetch(`http://localhost:2000/notifications`);
+    const response = await fetch(`/notifications`);
     if (!response.ok) {
         console.error("Couldn't fetch user notifications");
         return [];

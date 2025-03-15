@@ -30,7 +30,7 @@ async function getClassDates() {
   try {
 
     // fetch from server 
-    return fetch(`http://localhost:2000/class/`)
+    return fetch(`/class/`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
@@ -59,7 +59,7 @@ async function getParticipatingClasses() {
   try {
 
     // fetch from server 
-    return fetch(`http://localhost:2000/participant/`)
+    return fetch(`/participant/`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);

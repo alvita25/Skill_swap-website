@@ -37,7 +37,7 @@ async function insertName() {
 // function to get nearby tutions of a particular category 
 async function gettution() {
     // fetch the tutions 
-    const response = await fetch(`http://localhost:2000/skill/category/${catId}`);
+    const response = await fetch(`/skill/category/${catId}`);
 
     if (!response.ok) {
         // fetch unsuccessful return empty array 
@@ -161,7 +161,7 @@ async function gets() {
 
 // function to get timings of a skill 
 async function getTimings(id) {
-    const response = await fetch(`http://localhost:2000/skill/timings/${id}`)
+    const response = await fetch(`/skill/timings/${id}`)
     if (!response.ok) {
         console.error("Can't find classes");
         return [];

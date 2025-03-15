@@ -183,7 +183,7 @@ function attachListeners() {
 
 // function to get tuitions taken by user 
 async function gettution() {
-    const response = await fetch(`http://localhost:2000/skill/user`);
+    const response = await fetch(`/skill/user`);
     if (!response.ok) {
         console.error("Can't find classes");
         return [];
@@ -194,7 +194,7 @@ async function gettution() {
 
 // function to get timings of a tuition 
 async function getTimings(id) {
-    const response = await fetch(`http://localhost:2000/skill/timings/${id}`)
+    const response = await fetch(`/skill/timings/${id}`)
     if (!response.ok) {
         console.error("Can't find classes");
         return [];

@@ -58,7 +58,7 @@ window.onload = async function () {
 
 // function to get participants of a class
 function getParticipants() {
-    const fe1 = fetch(`http://localhost:2000/participant/class/${classId}`)
+    const fe1 = fetch(`/participant/class/${classId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("cant find please try again");
