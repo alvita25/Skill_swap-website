@@ -3,30 +3,25 @@ require("dotenv").config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require("express-session");
-const RedisStore = require("connect-redis").default;
-const { createClient } = require("redis");
+const pgSession = require('connect-pg-simple')(session);
+const { Pool } = require('pg');
 const router = require('./route.js');
 
-// Create Redis client
-const redisClient = createClient({
-    url: process.env.REDIS_URL,
-    legacyMode: true
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL, // Render PostgreSQL URL
+    ssl: { rejectUnauthorized: false } // Required for some Render setups
 });
-
-// Connect to Redis
-redisClient.connect()
-    .then(() => console.log("Connected to Redis Cloud"))
-    .catch(err => console.error("Redis Connection Error:", err));
-
-// Create RedisStore instance
-const redisStore = new RedisStore({ client: redisClient });
 
 // create instance of express application
 const app = express();
 
 // middleware
 app.use(session({
-    store: redisStore,
+    store: new pgSession({
+        pool: pool,
+        tableName: 'session', // Default is 'session'
+        createTableIfMissing: true 
+    }),
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
