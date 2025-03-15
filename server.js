@@ -23,15 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 3000;
 
-<<<<<<< HEAD:functions/server.js
-// app.listen(port, () => {
-//     console.log('listening at port ' + port);
-// })
-
-app.use("/.netlify/functions/server", router);
-module.exports.handler = serverless(app);
-=======
 app.listen(port, () => {
     console.log('listening at port ' + port);
 })
->>>>>>> parent of 15c8c95 (changes):server.js
