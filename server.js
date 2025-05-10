@@ -7,6 +7,7 @@ const pgSession = require('connect-pg-simple')(session);
 const { Pool } = require('pg');
 const router = require('./route.js');
 
+// remove this code to run in local 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL, // Render PostgreSQL URL
     ssl: { rejectUnauthorized: false } // Required for some Render setups
@@ -17,11 +18,13 @@ const app = express();
 
 // middleware
 app.use(session({
-    store: new pgSession({
-        pool: pool,
-        tableName: 'session', // Default is 'session'
-        createTableIfMissing: true 
+    // remove to run in local system 
+    store: new pgSession({                                  // remove
+        pool: pool,                                         // remove
+        tableName: 'session', // Default is 'session'       // remove
+        createTableIfMissing: true                          // remove
     }),
+
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
