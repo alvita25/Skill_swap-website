@@ -8,10 +8,10 @@ const { Pool } = require('pg');
 const router = require('./route.js');
 
 // remove this code to run in local 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL, // Render PostgreSQL URL
-    ssl: { rejectUnauthorized: false } // Required for some Render setups
-});
+// const pool = new Pool({
+//     connectionString: process.env.DATABASE_URL, // Render PostgreSQL URL
+//     ssl: { rejectUnauthorized: false } // Required for some Render setups
+// });
 
 // create instance of express application
 const app = express();
@@ -19,11 +19,11 @@ const app = express();
 // middleware
 app.use(session({
     // remove to run in local system 
-    store: new pgSession({                                  // remove
-        pool: pool,                                         // remove
-        tableName: 'session', // Default is 'session'       // remove
-        createTableIfMissing: true                          // remove
-    }),
+    // store: new pgSession({                                  // remove
+    //     pool: pool,                                         // remove
+    //     tableName: 'session', // Default is 'session'       // remove
+    //     createTableIfMissing: true                          // remove
+    // }),
 
     secret: 'your-secret-key',
     resave: false,
